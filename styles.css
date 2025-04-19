@@ -14,3 +14,12 @@
     height: 100vh;
     width: 100vw;
 }
+
+.add-new-book{
+    grid-area: 1 / 6 / 5 / 7;
+    border: 1px solid green;
+}
+
+.add-new-book > label, .add-new-book > input {
+    display: block;
+}
