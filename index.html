@@ -8,19 +8,23 @@
 </head>
 <body>
     <div class="card-container">
-        <form class="add-new-book">
-            <h2>Add a New Book</h2>
-            <label>Title</label>
-            <input>
-            <label>Author</label>
-            <input>
-            <label>Enter the amount of pages</label>
-            <input>
-            <label>Have you read the book?</label>
-            <input>
-            <button>Add</button>
-        </form>
+        
     </div>
+    <form class="add-new-book">
+        <h2>Add a New Book</h2>
+        <label for="input-title">Title</label>
+        <input id="input-title" type="text">
+        <label for="input-author">Author</label>
+        <input id="input-author" type="text">
+        <label for="input-pages">Enter the amount of pages</label>
+        <input id="input-pages" type="text">
+        <p>Have you read the book?</p>
+        <input id="yes-read" type="radio" value="Yes" name="read-book">
+        <label for="yes-read">Yes</label>
+        <input id="no-read" type="radio" value="No" name="read-book">
+        <label for="no-read">No</label>
+        <button type="button">Add</button>
+    </form>
     <script src="script.js"></script>
 </body>
 </html>

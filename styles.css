@@ -6,20 +6,30 @@
     box-sizing: border-box;
 }
 
+body{
+    display: flex;
+    flex-direction: row;
+}
+
 .card-container{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     border: 1px solid black;
     height: 100vh;
-    width: 100vw;
+    width:85vw;
 }
 
 .add-new-book{
-    grid-area: 1 / 6 / 5 / 7;
+    width: 15vw;
+    height: 100vh;
     border: 1px solid green;
 }
 
-.add-new-book > label, .add-new-book > input {
+.add-new-book > input, .add-new-book > button {
     display: block;
+}
+
+#yes-read, #no-read{
+    display: inline !important;
 }
