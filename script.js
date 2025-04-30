@@ -14,8 +14,8 @@ function Book(title, author, pages) {
 
 function addBookToLibrary(title, author, pages) {
     // implement unique id here!
-    const book = new Book(title, author, pages);
-    myLibrary.push(book);
+        const book = new Book(title, author, pages);
+        myLibrary.push(book);
 }
 
 function displayBooks() {
@@ -38,14 +38,23 @@ const bookData = new FormData(bookForm);
 const formInput = [];
 for(const [key, value] of bookData){
     formInput.push(value);
-    console.log(formInput);
 }
+// seperate from this function
 addBookToLibrary(formInput[0], formInput[1], formInput[2]);
 event.preventDefault();
+}
+
+// better to find a solution where old and new entries are compared
+function resetLibrary(){
+    cardContainer.innerHTML = '';
 }
 
 
 submitBtn.addEventListener("click", (event) => {
     retrieveFormData(event);
+    resetLibrary();
     displayBooks();
+    console.log(myLibrary);
 });
+
+
