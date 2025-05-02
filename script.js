@@ -34,38 +34,32 @@ function displayBooks() {
 }
 
 function retrieveFormData(event){
-event.preventDefault();
-const bookData = new FormData(bookForm);
-const formInput = []
-for(const [key, value] of bookData){
-    formInput.push(value);
-}
-return formInput;
+    event.preventDefault();
+    const bookData = new FormData(bookForm);
+    const formInput = []
+    for(const [key, value] of bookData){
+        formInput.push(value);
+    }
+    return formInput;
 }
 
-// seperate from this function
 function checkForDoubleEntries(event){
-const formInput = retrieveFormData(event);
-const [title, author, pages] = formInput;
-let allowEntry;
-if(myLibrary.length < 1){
+    const [title, author, pages] = retrieveFormData(event);
+    
+    if(myLibrary.length < 1){
     addBookToLibrary(title, author, pages);
-} else {
-    myLibrary.forEach(book => 
-        book.title === title 
-        ? allowEntry = false
-        : allowEntry = true)
-    allowEntry
-    ? addBookToLibrary(title, author, pages) 
-    : alert('This book has already been added!')
-}
+    } else {
+        const allowEntry = myLibrary.every(book => book.title != title);
+        allowEntry
+        ? addBookToLibrary(title, author, pages) 
+        : alert('This book has already been added!');
+    }
 }
 
 // better to find a solution where old and new entries are compared
 function resetLibrary(){
     cardContainer.innerHTML = '';
 }
-
 
 submitBtn.addEventListener("click", (event) => {
     checkForDoubleEntries(event);
