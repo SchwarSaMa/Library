@@ -3,26 +3,26 @@ const cardContainer = document.querySelector(".card-container");
 const submitBtn = document.querySelector("#submit-btn");
 const myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, uniqueId) {
     if(!new.target) {
         throw new Error("Constructor Book requires 'new' operator");
     }
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.uniqueId = uniqueId;
 }
 
 function addBookToLibrary(title, author, pages) {
-    // implement unique id here!
-        const book = new Book(title, author, pages);
-        myLibrary.push(book);
+    const uniqueId = crypto.randomUUID();
+    const book = new Book(title, author, pages, uniqueId);
+    myLibrary.push(book);
 }
 
 function displayBooks() {
-    const uniqueId = crypto.randomUUID();
     myLibrary.forEach(book => {
         cardContainer.innerHTML += `
-        <div class="book-${uniqueId}">
+        <div class="book-${book.uniqueId}">
             <h3 class="title">${book.title}</h3>
             <p class="author">${book.author}</p>
             <p class="pages">${book.pages}</p>
