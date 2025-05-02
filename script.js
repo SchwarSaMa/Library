@@ -34,14 +34,31 @@ function displayBooks() {
 }
 
 function retrieveFormData(event){
+event.preventDefault();
 const bookData = new FormData(bookForm);
-const formInput = [];
+const formInput = []
 for(const [key, value] of bookData){
     formInput.push(value);
 }
+return formInput;
+}
+
 // seperate from this function
-addBookToLibrary(formInput[0], formInput[1], formInput[2]);
-event.preventDefault();
+function checkForDoubleEntries(event){
+const formInput = retrieveFormData(event);
+const [title, author, pages] = formInput;
+let allowEntry;
+if(myLibrary.length < 1){
+    addBookToLibrary(title, author, pages);
+} else {
+    myLibrary.forEach(book => 
+        book.title === title 
+        ? allowEntry = false
+        : allowEntry = true)
+    allowEntry
+    ? addBookToLibrary(title, author, pages) 
+    : alert('This book has already been added!')
+}
 }
 
 // better to find a solution where old and new entries are compared
@@ -51,10 +68,9 @@ function resetLibrary(){
 
 
 submitBtn.addEventListener("click", (event) => {
-    retrieveFormData(event);
+    checkForDoubleEntries(event);
     resetLibrary();
     displayBooks();
-    console.log(myLibrary);
 });
 
 
