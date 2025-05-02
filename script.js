@@ -22,12 +22,12 @@ function addBookToLibrary(title, author, pages) {
 function displayBooks() {
     myLibrary.forEach(book => {
         cardContainer.innerHTML += `
-        <div class="book-${book.uniqueId}">
+        <div class="book-info" data-unique-id="${book.uniqueId}">
             <h3 class="title">${book.title}</h3>
             <p class="author">${book.author}</p>
             <p class="pages">${book.pages}</p>
-            <button class="read">Read</button>
-            <button class="delete">Delete</button>
+            <button class="read-btn">Read</button>
+            <button class="delete-btn" onclick="deleteBook(event)" >Delete</button>
         </div>
         `
     });
@@ -59,6 +59,14 @@ function checkForDoubleEntries(event){
 // better to find a solution where old and new entries are compared
 function resetLibrary(){
     cardContainer.innerHTML = '';
+}
+
+function deleteBook(event){
+    const uniqueId = event.currentTarget.parentNode.dataset.uniqueId;
+    const index = myLibrary.findIndex(book => book.uniqueId === uniqueId);
+    myLibrary.splice(index, 1);
+    resetLibrary();
+    displayBooks();
 }
 
 submitBtn.addEventListener("click", (event) => {
