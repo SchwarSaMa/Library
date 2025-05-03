@@ -3,19 +3,20 @@ const cardContainer = document.querySelector(".card-container");
 const submitBtn = document.querySelector("#submit-btn");
 const myLibrary = [];
 
-function Book(title, author, pages, uniqueId) {
+function Book(title, author, pages, readStatus, uniqueId) {
     if(!new.target) {
         throw new Error("Constructor Book requires 'new' operator");
     }
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.readStatus = readStatus;
     this.uniqueId = uniqueId;
 }
 
-function addBookToLibrary(title, author, pages) {
+function addBookToLibrary(title, author, pages, readStatus) {
     const uniqueId = crypto.randomUUID();
-    const book = new Book(title, author, pages, uniqueId);
+    const book = new Book(title, author, pages, readStatus, uniqueId);
     myLibrary.push(book);
 }
 
@@ -26,7 +27,7 @@ function displayBooks() {
             <h3 class="title">${book.title}</h3>
             <p class="author">${book.author}</p>
             <p class="pages">${book.pages}</p>
-            <button class="read-btn">Read</button>
+            <button class="read-btn">${book.readStatus}</button>
             <button class="delete-btn" onclick="deleteBook(event)" >Delete</button>
         </div>
         `
@@ -44,14 +45,13 @@ function retrieveFormData(event){
 }
 
 function checkForDoubleEntries(event){
-    const [title, author, pages] = retrieveFormData(event);
-    
+    const [title, author, pages, readStatus] = retrieveFormData(event);
     if(myLibrary.length < 1){
-    addBookToLibrary(title, author, pages);
+    addBookToLibrary(title, author, pages, readStatus);
     } else {
         const allowEntry = myLibrary.every(book => book.title != title);
         allowEntry
-        ? addBookToLibrary(title, author, pages) 
+        ? addBookToLibrary(title, author, pages, readStatus) 
         : alert('This book has already been added!');
     }
 }
