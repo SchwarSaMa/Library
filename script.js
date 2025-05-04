@@ -52,13 +52,17 @@ function retrieveFormData(event){
 
 function checkForDoubleEntries(event){
     const [title, author, pages, readStatus] = retrieveFormData(event);
-    if(myLibrary.length < 1){
-    addBookToLibrary(title, author, pages, readStatus);
+    if(!title || !author){
+        alert('Fill in both TITLE and AUTHOR');
     } else {
-        const allowEntry = myLibrary.every(book => book.title != title);
-        allowEntry
-        ? addBookToLibrary(title, author, pages, readStatus) 
-        : alert('This book has already been added!');
+        if(myLibrary.length < 1){
+            addBookToLibrary(title, author, pages, readStatus);
+        } else {
+            const allowEntry = myLibrary.every(book => book.title != title);
+            allowEntry
+            ? addBookToLibrary(title, author, pages, readStatus) 
+            : alert('This book has already been added!');
+        }
     }
 }
 
