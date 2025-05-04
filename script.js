@@ -91,4 +91,3 @@ submitBtn.addEventListener("click", (event) => {
     displayBooks();
 });
 
-

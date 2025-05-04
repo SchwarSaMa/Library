@@ -9,21 +9,92 @@
 body{
     display: flex;
     flex-direction: row;
+    background-color: #def2f1;
 }
 
 .card-container{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    border: 1px solid black;
     height: 100vh;
     width:85vw;
 }
 
+.book-info{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3aafa9;
+    border-radius: 10px;
+}
+
+.title{
+    font-size: 25px;
+    color: #feffff;
+    font-family: monospace;
+    text-align: center;
+}
+
+.author{
+    font-size: 18px;
+    font-family: monospace;
+    text-align: center;
+    color: #17252a;
+}
+
+.pages{
+    font-size: 18px;
+    font-family: monospace;
+    text-align: center;
+    color: #17252a;
+}
+
+.btn-container{
+    text-align: center;
+}
+
+.read-btn, .delete-btn, #submit-btn{
+    font-size: 15px;
+    width: 80px;
+    font-family: monospace;
+    text-align: center;
+    color: #feffff;
+    background-color: #2b7a78;
+    border-radius: 5px;
+    border-bottom: 2px solid #17252a;
+    border-right: 2px solid #17252a;
+    border-top: 2px solid #def2f1;
+    border-left: 2px solid #def2f1;
+}
+
+.read-btn:active, .delete-btn:active{
+    border-bottom: 2px solid #def2f1;
+    border-right: 2px solid #def2f1;
+    border-top: 2px solid #17252a;
+    border-left: 2px solid #17252a;
+}
+
 .add-new-book{
-    width: 15vw;
+    width: 25vw;
     height: 100vh;
-    border: 1px solid green;
+    background-color: #3aafa9;
+    font-family: monospace;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.add-new-book > h2{
+    font-size: 25px;
+    color: #feffff;
+    text-align: center;
+    padding: 5px;
+}
+
+.add-new-book > label, .add-new-book > p {
+    color: #17252a;
+    font-size: 18px;
 }
 
 .add-new-book > input, .add-new-book > button {
@@ -31,5 +102,19 @@ body{
 }
 
 #yes-read, #no-read{
+    width: 20px;
+    height: 20px;
     display: inline !important;
+}
+
+.add-new-book > input{
+    margin-bottom: 10px;
+    background-color: #feffff;
+    border: 2px solid #def2f1;
+    border-radius: 5px;
+}
+
+.add-new-book > input:focus{
+    outline: none;
+    border: 3px solid #17252a;
 }
