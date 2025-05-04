@@ -3,20 +3,26 @@ const cardContainer = document.querySelector(".card-container");
 const submitBtn = document.querySelector("#submit-btn");
 const myLibrary = [];
 
-function Book(title, author, pages, readStatus, uniqueId) {
+function Book(title, author, pages, uniqueId) {
     if(!new.target) {
         throw new Error("Constructor Book requires 'new' operator");
     }
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.readStatus = readStatus;
+    this.readStatus;
     this.uniqueId = uniqueId;
+
+    this.verifyReadStatus = function(readStatus){
+        this.readStatus = readStatus === true ? 'READ' : 'not READ';
+    };
 }
 
 function addBookToLibrary(title, author, pages, readStatus) {
     const uniqueId = crypto.randomUUID();
-    const book = new Book(title, author, pages, readStatus, uniqueId);
+    const readStatusConversion = readStatus === 'true' ? true : false;
+    const book = new Book(title, author, pages, uniqueId);
+    book.verifyReadStatus(readStatusConversion);
     myLibrary.push(book);
 }
 
@@ -27,10 +33,10 @@ function displayBooks() {
             <h3 class="title">${book.title}</h3>
             <p class="author">${book.author}</p>
             <p class="pages">${book.pages}</p>
-            <button class="read-btn">${book.readStatus}</button>
-            <button class="delete-btn" onclick="deleteBook(event)" >Delete</button>
+            <button class="read-btn" onclick="toggleReadStatus(event)">${book.readStatus}</button>
+            <button class="delete-btn" onclick="deleteBook(event)">Delete</button>
         </div>
-        `
+        `;
     });
 }
 
@@ -65,6 +71,16 @@ function deleteBook(event){
     const uniqueId = event.currentTarget.parentNode.dataset.uniqueId;
     const index = myLibrary.findIndex(book => book.uniqueId === uniqueId);
     myLibrary.splice(index, 1);
+    resetLibrary();
+    displayBooks();
+}
+
+function toggleReadStatus(event){
+    const uniqueId = event.currentTarget.parentNode.dataset.uniqueId;
+    const index = myLibrary.findIndex(book => book.uniqueId === uniqueId);
+    const readStatusConversion = myLibrary[index].readStatus === 'READ' ? true : false;
+    const toggle = !readStatusConversion;
+    myLibrary[index].readStatus = toggle === true ? 'READ' : 'not READ';
     resetLibrary();
     displayBooks();
 }
