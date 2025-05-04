@@ -1,6 +1,7 @@
 const bookForm = document.querySelector(".add-new-book");
 const cardContainer = document.querySelector(".card-container");
 const submitBtn = document.querySelector("#submit-btn");
+const inputFields = document.querySelectorAll("input");
 const myLibrary = [];
 
 function Book(title, author, pages, uniqueId) {
@@ -71,6 +72,13 @@ function resetLibrary(){
     cardContainer.innerHTML = '';
 }
 
+function resetInputFields(){
+    inputFields.forEach(input => {
+        input.value = '';
+        input.checked = false;
+    });
+}
+
 function deleteBook(event){
     const uniqueId = event.currentTarget.parentNode.dataset.uniqueId;
     const index = myLibrary.findIndex(book => book.uniqueId === uniqueId);
@@ -91,6 +99,7 @@ function toggleReadStatus(event){
 
 submitBtn.addEventListener("click", (event) => {
     checkForDoubleEntries(event);
+    resetInputFields();
     resetLibrary();
     displayBooks();
 });
