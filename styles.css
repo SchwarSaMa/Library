@@ -1,3 +1,8 @@
+/*
+    Add min max sizes of form and book cards
+    Add media queries
+*/
+
 ::after,
 ::before,
 *{
@@ -14,10 +19,12 @@ body{
 
 .card-container{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(auto-fill, 225px);
+    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 20px;
     height: 100vh;
     width:85vw;
+    padding: 10px;
 }
 
 .book-info{
@@ -28,6 +35,7 @@ body{
     align-items: center;
     background-color: #3aafa9;
     border-radius: 10px;
+    box-shadow: 10px 10px 5px #507f8f;;
 }
 
 .title{

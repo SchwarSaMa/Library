@@ -1,3 +1,7 @@
+/*
+    avoid HTML injection
+*/
+
 const bookForm = document.querySelector(".add-new-book");
 const cardContainer = document.querySelector(".card-container");
 const submitBtn = document.querySelector("#submit-btn");
@@ -41,8 +45,7 @@ function displayBooks() {
     });
 }
 
-function retrieveFormData(event){
-    event.preventDefault();
+function retrieveFormData(){
     const bookData = new FormData(bookForm);
     const formInput = []
     for(const [key, value] of bookData){
@@ -51,8 +54,8 @@ function retrieveFormData(event){
     return formInput;
 }
 
-function checkForDoubleEntries(event){
-    const [title, author, pages, readStatus] = retrieveFormData(event);
+function checkForDoubleEntries(){
+    const [title, author, pages, readStatus] = retrieveFormData();
     if(!title || !author){
         alert('Fill in both TITLE and AUTHOR');
     } else {
@@ -98,9 +101,38 @@ function toggleReadStatus(event){
 }
 
 submitBtn.addEventListener("click", (event) => {
-    checkForDoubleEntries(event);
-    resetInputFields();
-    resetLibrary();
-    displayBooks();
+    event.preventDefault();
+    if(myLibrary.length >= 12){
+        alert('You can only store 12 books. First delete an old one, then add a new book');
+    }else{
+        checkForDoubleEntries();
+        resetLibrary();
+        displayBooks();
+    }
 });
 
+const bookTest = new Book('Eragon', 'Christopher Paolini', '300');
+const bookTest1 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest2 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest3 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest4 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest5 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest6 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest7 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest8 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest9 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest10 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest11 = new Book('Eragon1', 'Christopher Paolini', '300');
+myLibrary.push(bookTest);
+myLibrary.push(bookTest1);
+myLibrary.push(bookTest2);
+myLibrary.push(bookTest3);
+myLibrary.push(bookTest4);
+myLibrary.push(bookTest5);
+myLibrary.push(bookTest6);
+myLibrary.push(bookTest7);
+myLibrary.push(bookTest8);
+myLibrary.push(bookTest9);
+myLibrary.push(bookTest10);
+myLibrary.push(bookTest11);
+displayBooks();
