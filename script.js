@@ -35,8 +35,16 @@ function displayBooks() {
     myLibrary.forEach(book => {
         cardContainer.innerHTML += `
         <div class="book-info" data-unique-id="${book.uniqueId}">
-            <h3 class="title">${book.title}</h3>
-            <p class="author">${book.author}</p>
+            <h3 class="title">
+            ${book.title.length > 40 
+                ? book.title.slice(0,39).concat('...')
+                : book.title
+            }</h3>
+            <p class="author">
+            ${book.author.length > 30 
+                ? book.author.slice(0,29).concat('...')
+                : book.author
+            }</p>
             <p class="pages">${book.pages}</p>
             <button class="read-btn" onclick="toggleReadStatus(event)">${book.readStatus}</button>
             <button class="delete-btn" onclick="deleteBook(event)">Delete</button>
@@ -113,16 +121,16 @@ submitBtn.addEventListener("click", (event) => {
 
 const bookTest = new Book('Eragon', 'Christopher Paolini', '300');
 const bookTest1 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest2 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest3 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest4 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest2 = new Book('Eragon2', 'Christopher Paolini', '300');
+const bookTest3 = new Book('Eragon3', 'Christopher Paolini', '300');
+const bookTest4 = new Book('Eragon', 'Christopher Paolini', '300');
 const bookTest5 = new Book('Eragon1', 'Christopher Paolini', '300');
 const bookTest6 = new Book('Eragon1', 'Christopher Paolini', '300');
 const bookTest7 = new Book('Eragon1', 'Christopher Paolini', '300');
 const bookTest8 = new Book('Eragon1', 'Christopher Paolini', '300');
 const bookTest9 = new Book('Eragon1', 'Christopher Paolini', '300');
 const bookTest10 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest11 = new Book('Eragon1', 'Christopher Paolini', '300');
+const bookTest11 = new Book('Eragon1 Eragon1 Eragon1 Eragon1 Eragon1 Eragon1 Eragon 1 Eragon 1 Eragon 1 Eragon 1 Eragon 1', 'Christopher Paolini', '300');
 myLibrary.push(bookTest);
 myLibrary.push(bookTest1);
 myLibrary.push(bookTest2);

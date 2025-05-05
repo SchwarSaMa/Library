@@ -1,6 +1,5 @@
 /*
-    Add min max sizes of form and book cards
-    Add media queries
+    nav-bar min und max size
 */
 
 ::after,
@@ -38,7 +37,7 @@ body{
     align-items: center;
     background-color: #3aafa9;
     border-radius: 10px;
-    box-shadow: 10px 10px 5px #507f8f;;
+    box-shadow: 10px 10px 5px #507f8f;
 }
 
 .title{
