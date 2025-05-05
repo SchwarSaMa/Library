@@ -19,12 +19,15 @@ body{
 
 .card-container{
     display: grid;
+    grid-auto-flow: column;
     grid-template-rows: repeat(auto-fill, 225px);
-    grid-template-columns: repeat(auto-fill, 250px);
+    grid-template-columns: repeat(4, 250px);
     gap: 20px;
     height: 100vh;
-    width:85vw;
+    max-height: 100vh;
+    width: 85vw;
     padding: 10px;
+    overflow-x: auto;
 }
 
 .book-info{
@@ -126,3 +129,15 @@ body{
     outline: none;
     border: 3px solid #17252a;
 }
+
+@media screen and (max-height: 734px) {
+    .card-container{
+        grid-template-columns: repeat(6, 250px);
+    }
+  }
+
+  @media screen and (max-height: 489px) {
+    .card-container{
+        grid-template-columns: repeat(12, 250px);
+    }
+  }
