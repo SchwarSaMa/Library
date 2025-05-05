@@ -1,7 +1,3 @@
-/*
-    nav-bar min und max size
-*/
-
 ::after,
 ::before,
 *{
@@ -88,7 +84,9 @@ body{
 
 .add-new-book{
     width: 25vw;
+    min-width: 200px;
     height: 100vh;
+    min-height: 350px;
     background-color: #3aafa9;
     font-family: monospace;
     align-items: center;
