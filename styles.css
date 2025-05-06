@@ -14,7 +14,7 @@ body{
 
 .card-container{
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     grid-template-rows: repeat(auto-fill, 225px);
     grid-template-columns: repeat(4, 250px);
     gap: 20px;
@@ -31,14 +31,15 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: #3aafa9;
+    background-color:#def2f1;
+    border: 2px solid #3aafa9;
     border-radius: 10px;
     box-shadow: 10px 10px 5px #507f8f;
 }
 
 .title{
     font-size: 25px;
-    color: #feffff;
+    color: #2b7a78;
     font-family: monospace;
     text-align: center;
 }
@@ -87,7 +88,8 @@ body{
     min-width: 200px;
     height: 100vh;
     min-height: 350px;
-    background-color: #3aafa9;
+    background-color: #feffff;
+    border-left: 2px double #3aafa9;
     font-family: monospace;
     align-items: center;
     padding-left: 5px;
@@ -95,7 +97,7 @@ body{
 
 .add-new-book > h2{
     font-size: 25px;
-    color: #feffff;
+    color:#2b7a78;
     text-align: center;
     padding: 5px;
 }
@@ -133,7 +135,7 @@ body{
     }
   }
 
-  @media screen and (max-height: 489px) {
+@media screen and (max-height: 489px) {
     .card-container{
         grid-template-columns: repeat(12, 250px);
     }
