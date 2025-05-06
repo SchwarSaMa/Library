@@ -117,7 +117,6 @@ submitBtn.addEventListener("click", (event) => {
         resetInputFields();
         resetLibrary();
         displayBooks();
-        console.log(myLibrary);
     }
 });
 
