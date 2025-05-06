@@ -45,7 +45,7 @@ function displayBooks() {
                 ? book.author.slice(0,29).concat('...')
                 : book.author
             }</p>
-            <p class="pages">${book.pages}</p>
+            <p class="pages">${book.pages} Seiten</p>
             <button class="read-btn" onclick="toggleReadStatus(event)">${book.readStatus}</button>
             <button class="delete-btn" onclick="deleteBook(event)">Delete</button>
         </div>
@@ -114,33 +114,19 @@ submitBtn.addEventListener("click", (event) => {
         alert('You can only store 12 books. First delete an old one, then add a new book');
     }else{
         checkForDoubleEntries();
+        resetInputFields();
         resetLibrary();
         displayBooks();
+        console.log(myLibrary);
     }
 });
 
-const bookTest = new Book('Eragon', 'Christopher Paolini', '300');
-const bookTest1 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest2 = new Book('Eragon2', 'Christopher Paolini', '300');
-const bookTest3 = new Book('Eragon3', 'Christopher Paolini', '300');
-const bookTest4 = new Book('Eragon', 'Christopher Paolini', '300');
-const bookTest5 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest6 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest7 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest8 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest9 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest10 = new Book('Eragon1', 'Christopher Paolini', '300');
-const bookTest11 = new Book('Eragon1 Eragon1 Eragon1 Eragon1 Eragon1 Eragon1 Eragon 1 Eragon 1 Eragon 1 Eragon 1 Eragon 1', 'Christopher Paolini', '300');
-myLibrary.push(bookTest);
-myLibrary.push(bookTest1);
-myLibrary.push(bookTest2);
-myLibrary.push(bookTest3);
-myLibrary.push(bookTest4);
-myLibrary.push(bookTest5);
-myLibrary.push(bookTest6);
-myLibrary.push(bookTest7);
-myLibrary.push(bookTest8);
-myLibrary.push(bookTest9);
-myLibrary.push(bookTest10);
-myLibrary.push(bookTest11);
+// Demo Books
+const demoBook1 = new Book('Eragon - Das Vermächtnis der Drachenreiter', 'Christopher Paolini', '526', '1234');
+myLibrary.push(demoBook1);
+myLibrary[0].readStatus = 'READ';
+const demoBook2 = new Book('Der Hobbit', 'J. R. R. Tolkien', '354', '5678');
+myLibrary.push(demoBook2);
+myLibrary[1].readStatus = 'READ';
 displayBooks();
+
