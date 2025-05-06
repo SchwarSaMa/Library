@@ -62,7 +62,7 @@ body{
     text-align: center;
 }
 
-.read-btn, .delete-btn, #submit-btn{
+button{
     font-size: 15px;
     width: 80px;
     font-family: monospace;
@@ -76,7 +76,11 @@ body{
     border-left: 2px solid #def2f1;
 }
 
-.read-btn:active, .delete-btn:active{
+button:hover{
+    background-color: #3aafa9;
+}
+
+button:active{
     border-bottom: 2px solid #def2f1;
     border-right: 2px solid #def2f1;
     border-top: 2px solid #17252a;
