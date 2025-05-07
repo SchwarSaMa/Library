@@ -1,10 +1,6 @@
 # Library App
 
-## About
-
 **Library App** is designed to help users keep track of the books in their collection. Whether you want to monitor the books you've read or simply maintain a list of your favorites, this app provides an intuitive interface to manage your personal library. The application prevents duplicate entries and enforces a limit on the total number of stored books.
-
----
 
 ## Features
 
@@ -25,8 +21,6 @@
 
 - **Input Validation:**  
   The form checks for required fields and avoids duplicate entries, alerting the user as needed.
-
----
 
 ## Technologies
 
